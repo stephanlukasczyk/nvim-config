@@ -7,8 +7,8 @@ function M.setup()
   local actions = require("telescope.actions")
 
   command("TGrep", function(input)
-    require("telescope.builtin").grep_string({search = input.args})
-  end, {nargs = 1})
+    require("telescope.builtin").grep_string({ search = input.args })
+  end, { nargs = 1 })
 
   local function defaults(title)
     return {
@@ -36,14 +36,14 @@ function M.setup()
       },
 
       -- Default layout options
-      prompt_prefix = ' ',
-      selection_caret = '❯ ',
-      layout_strategy = 'vertical',
-      sorting_strategy = 'ascending',
+      prompt_prefix = " ",
+      selection_caret = "❯ ",
+      layout_strategy = "vertical",
+      sorting_strategy = "ascending",
       layout_config = {
         preview_cutoff = 25,
         mirror = true,
-        prompt_position = 'top'
+        prompt_position = "top",
       },
     },
 

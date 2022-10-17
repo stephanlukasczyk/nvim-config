@@ -1,14 +1,14 @@
 require("mason").setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗"
-		}
-	}
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
+    },
+  },
 })
 
-local null_ls = require "null-ls"
+local null_ls = require("null-ls")
 null_ls.setup({
   sources = {
     null_ls.builtins.code_actions.proselint,
@@ -22,5 +22,5 @@ null_ls.setup({
 })
 
 require("mason-null-ls").setup({
-  ensure_installed = { "proselint", "black", "flake8", "isrot", "mypy", "pylint" }
+  ensure_installed = { "proselint", "black", "flake8", "isrot", "mypy", "pylint" },
 })

@@ -1,7 +1,7 @@
 local M = {}
 
-local icons = require "config.icons"
-local lualine = require "lualine"
+local icons = require("config.icons")
+local lualine = require("lualine")
 
 function M.setup()
   lualine.setup({

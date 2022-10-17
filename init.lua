@@ -46,119 +46,119 @@ end
 
 -- Plugins
 local function plugins(use)
-  use { "wbthomason/packer.nvim" }
+  use({ "wbthomason/packer.nvim" })
 
   -- Solarized colour theme
-  use { "altercation/vim-colors-solarized" }
+  use({ "altercation/vim-colors-solarized" })
 
   -- Icons
-  use {
+  use({
     "kyazdani42/nvim-web-devicons",
     module = "nvim-web-devicons",
     config = function()
-      require("nvim-web-devicons").setup { default = true }
+      require("nvim-web-devicons").setup({ default = true })
     end,
-  }
+  })
 
   -- Colorizer to preview colours
-  use {
+  use({
     "nvchad/nvim-colorizer.lua",
     cmd = "ColorizerToggle",
     config = function()
       require("colorizer").setup()
     end,
-  }
+  })
 
   -- Startup screen
-  use {
+  use({
     "goolord/alpha-nvim",
     config = function()
       require("config.alpha").setup()
     end,
-  }
+  })
 
   -- LuaLine status bar
-  use {
+  use({
     "nvim-lualine/lualine.nvim",
     event = "BufReadPre",
     config = function()
       require("config.lualine").setup()
     end,
     wants = "nvim-web-devicons",
-  }
+  })
 
   -- Git
-  use {
+  use({
     "tpope/vim-fugitive",
     opt = true,
     requires = {
       "tpope/vim-rhubarb",
       "idanarye/vim-merginal",
     },
-  }
-  use {
+  })
+  use({
     "lewis6991/gitsigns.nvim",
     config = function()
-      require "config.gitsigns"
+      require("config.gitsigns")
     end,
-  }
-  use { "rhysd/committia.vim" }
+  })
+  use({ "rhysd/committia.vim" })
 
-  use { "nvim-lua/plenary.nvim" }
+  use({ "nvim-lua/plenary.nvim" })
 
-  use {
+  use({
     "junegunn/goyo.vim",
     config = function()
-      require "config.goyo"
+      require("config.goyo")
     end,
-  }
+  })
 
   -- Buffer line
-  use {
+  use({
     "akinsho/nvim-bufferline.lua",
     event = "BufReadPre",
     wants = "nvim-web-devicons",
     config = function()
       require("config.bufferline").setup()
     end,
-  }
+  })
 
   -- LuaSnip
-  use {
+  use({
     "L3MON4D3/LuaSnip",
     config = function()
-      require "config.luasnip"
+      require("config.luasnip")
     end,
     requires = {
       "rafamadriz/friendly-snippets",
       "saadparwaiz1/cmp_luasnip",
     },
-  }
+  })
 
   -- Indent Blankline
-  use {
+  use({
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("config.blankline").setup()
     end,
-  }
+  })
 
   -- Treesitter
-  use {
+  use({
     "nvim-treesitter/nvim-treesitter",
-    config = function ()
+    config = function()
       require("config.treesitter").setup()
     end,
     requires = {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
-  }
+  })
 
   -- LSP
-  use {
+  use({
     "neovim/nvim-lspconfig",
     config = function()
-      require "config.lsp"
+      require("config.lsp")
     end,
     requires = {
       "hrsh7th/nvim-cmp",
@@ -171,12 +171,12 @@ local function plugins(use)
       "L3MON4D3/LuaSnip",
       "onsails/lspkind-nvim",
     },
-  }
+  })
 
-  use {
+  use({
     "williamboman/mason.nvim",
     config = function()
-      require "config.mason"
+      require("config.mason")
     end,
     requires = {
       "williamboman/mason-lspconfig.nvim",
@@ -184,9 +184,9 @@ local function plugins(use)
       "jose-elias-alvarez/null-ls.nvim",
       "jayp0521/mason-null-ls.nvim",
     },
-  }
+  })
 
-  use {
+  use({
     "f3fora/nvim-texlabconfig",
     config = function()
       require("config.texlab").setup()
@@ -196,10 +196,10 @@ local function plugins(use)
     },
     ft = { "tex", "bib", "dtx", "ins" },
     run = "go build -o ~/bin/",
-  }
+  })
 
   -- Telescope
-  use {
+  use({
     "nvim-telescope/telescope.nvim",
     config = function()
       require("config.telescope").setup()
@@ -207,12 +207,11 @@ local function plugins(use)
     requires = {
       "nvim-telescope/telescope-fzf-native.nvim",
     },
-  }
-  use {
+  })
+  use({
     "nvim-telescope/telescope-fzf-native.nvim",
-    run = "make"
-  }
-
+    run = "make",
+  })
 
   -- Bootstrap NeoVIM
   if packer_bootstrap then
@@ -227,6 +226,6 @@ local packer = require("packer")
 packer.init(conf)
 packer.startup(plugins)
 
-require "config.solarized"
-require "config.general"
-require "config.filetypes"
+require("config.solarized")
+require("config.general")
+require("config.filetypes")

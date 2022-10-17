@@ -17,7 +17,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 -- Show relevant white spaces
-vim.opt.listchars = { tab = '▸ ', trail = '·' }
+vim.opt.listchars = { tab = "▸ ", trail = "·" }
 
 -- Height of command bar
 vim.o.cmdheight = 1
@@ -54,12 +54,12 @@ vim.keymap.set("n", "<leader>mo", function()
 end)
 vim.o.mouse = "a"
 
-vim.cmd [[
+vim.cmd([[
   filetype on
   filetype plugin on
   filetype plugin indent on
   syntax on
-]]
+]])
 
 -- Turn of backup, since most stuff is in Git anyway...
 vim.o.backup = false

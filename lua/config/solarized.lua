@@ -1,9 +1,9 @@
-vim.cmd [[
+vim.cmd([[
   colorscheme solarized
-]]
+]])
 vim.o.background = "dark"
 
-vim.cmd [[
+vim.cmd([[
   hi! link SignColumn LineNr
 
   hi Search ctermfg=white ctermbg=173 cterm=none guifg=#ffffff guibg=#e5786d gui=none
@@ -17,4 +17,4 @@ vim.cmd [[
   set guicursor+=n-v-c:blinkon0
 
   set t_Co=256
-]]
+]])

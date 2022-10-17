@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  require("bufferline").setup {
+  require("bufferline").setup({
     options = {
       mode = "buffers",
       diagnostics = "nvim_lsp",
@@ -11,7 +11,7 @@ function M.setup()
       show_close_icon = false,
       color_icons = true,
     },
-  }
+  })
 end
 
 return M
