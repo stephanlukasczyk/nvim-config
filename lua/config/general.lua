@@ -81,3 +81,6 @@ vim.opt.breakindent = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.wrap = true
+
+-- Set Python executable
+vim.api.nvim_set_var("python3_host_prog", "~/virtualenvs/neovim3/bin/python")
