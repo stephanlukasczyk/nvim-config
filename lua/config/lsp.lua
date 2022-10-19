@@ -57,12 +57,8 @@ function M.setup()
   end
 
   local handlers = {
-    ["textDocument/hover"] = vim.lsp.with(
-      vim.lsp.handlers.hover, { border = "rounded" }
-    ),
-    ["textDocument/signatureHelp"] = vim.lsp.with(
-      vim.lsp.handlers.signature_help, { border = "rounded" }
-    ),
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
   }
 
   M.setup_lsp("pyright", lspconfig, capabilities, on_attach, handlers)
@@ -161,7 +157,7 @@ function M.setup_lua(lspconfig, capabilities, on_attach, handlers)
         workspace = {
           library = {
             vim.fn.expand("$VIMRUNTIME/lua"),
-            vim.fn.stdpath("config") .. "/lua"
+            vim.fn.stdpath("config") .. "/lua",
           },
         },
       },
@@ -189,8 +185,8 @@ function M.setup_null_ls(on_attach)
         desc = "Format using null-ls",
       })
 
-      vim.keymap.set({"n", "x"}, "gq", "<cmd>NullFormat<cr>", {
-        bufnr = bufnr
+      vim.keymap.set({ "n", "x" }, "gq", "<cmd>NullFormat<cr>", {
+        bufnr = bufnr,
       })
     end,
 
@@ -198,12 +194,12 @@ function M.setup_null_ls(on_attach)
 
     sources = {
       null_ls.builtins.code_actions.proselint.with({
-        filetypes = { "markdown", "tex", "text", "mail" }
+        filetypes = { "markdown", "tex", "text", "mail" },
       }),
       null_ls.builtins.code_actions.shellcheck,
       null_ls.builtins.diagnostics.chktex,
       null_ls.builtins.diagnostics.proselint.with({
-        filetypes = { "markdown", "tex", "text", "mail" }
+        filetypes = { "markdown", "tex", "text", "mail" },
       }),
       null_ls.builtins.diagnostics.shellcheck,
       null_ls.builtins.diagnostics.write_good,
@@ -251,22 +247,26 @@ function M.diagnostics()
     group = group,
     pattern = { "n:i", "v:s" },
     desc = "Disable diagnostics while typing",
-    callback = function() vim.diagnostic.disable(0) end,
+    callback = function()
+      vim.diagnostic.disable(0)
+    end,
   })
 
   autocmd("ModeChanged", {
     group = group,
     pattern = "i:n",
     desc = "Enable diagnostics when leaving insert mode",
-    callback = function() vim.diagnostic.enable(0) end,
+    callback = function()
+      vim.diagnostic.enable(0)
+    end,
   })
 
   local bind = vim.keymap.set
   local opts = { noremap = true, silent = true }
-  bind("n", "<space>e", vim.diagnostic.open_float, opts)
-  bind("n", "[d", vim.diagnostic.goto_prev, opts)
-  bind("n", "]d", vim.diagnostic.goto_next, opts)
-  bind("n", "<space>q", vim.diagnostic.setloclist, opts)
+  bind("n", "<leader>do", vim.diagnostic.open_float, opts)
+  bind("n", "<leader>d[", vim.diagnostic.goto_prev, opts)
+  bind("n", "<leader>d]", vim.diagnostic.goto_next, opts)
+  bind("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", opts)
 end
 
 return M

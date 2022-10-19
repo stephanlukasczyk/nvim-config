@@ -2,6 +2,9 @@ local cmd = vim.cmd
 local fn = vim.fn
 local api = vim.api
 
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
+
 -- Global object
 _G.NVMM = {}
 
