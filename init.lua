@@ -54,6 +54,14 @@ local function plugins(use)
   -- Solarized colour theme
   use({ "altercation/vim-colors-solarized" })
 
+  -- Change colour theme based on iTerm colour-scheme change
+  use({
+    "will/bgwinch.nvim",
+    config = function()
+      require("bgwinch").setup()
+    end,
+  })
+
   -- Icons
   use({
     "kyazdani42/nvim-web-devicons",
