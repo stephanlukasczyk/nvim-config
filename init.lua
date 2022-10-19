@@ -221,6 +221,21 @@ local function plugins(use)
     run = "make",
   })
 
+  -- Markdown
+  use({
+    "iamcco/markdown-preview.nvim",
+    opt = true,
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    ft = "markdown",
+    cmd = { "MarkdownPreview" },
+    requires = {
+      "zhaozg/vim-diagram",
+      "aklt/plantuml-syntax",
+    },
+  })
+
   -- Bootstrap NeoVIM
   if packer_bootstrap then
     print("NeoVIM restart is required after installation!")
