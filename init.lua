@@ -127,11 +127,26 @@ local function plugins(use)
   use({
     "L3MON4D3/LuaSnip",
     config = function()
-      require("config.luasnip")
+      require("config.luasnip").setup()
     end,
     requires = {
       "rafamadriz/friendly-snippets",
       "saadparwaiz1/cmp_luasnip",
+    },
+  })
+
+  -- Autocompletion
+  use({
+    "hrsh7th/nvim-cmp",
+    config = function()
+      require("config.nvim-cmp").setup()
+    end,
+    requires = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
     },
   })
 
@@ -156,33 +171,15 @@ local function plugins(use)
 
   -- LSP
   use({
-    "neovim/nvim-lspconfig",
-    config = function()
-      require("config.lsp")
-    end,
-    requires = {
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-git",
-      "saadparwaiz1/cmp_luasnip",
-      "L3MON4D3/LuaSnip",
-      "onsails/lspkind-nvim",
-    },
-  })
-
-  use({
     "williamboman/mason.nvim",
     config = function()
-      require("config.mason")
+      require("config.lsp").setup()
     end,
     requires = {
+      "neovim/nvim-lspconfig",
       "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
       "jose-elias-alvarez/null-ls.nvim",
-      "jayp0521/mason-null-ls.nvim",
+      "j-hui/fidget.nvim",
     },
   })
 
