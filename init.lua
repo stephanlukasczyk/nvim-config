@@ -54,6 +54,9 @@ local function plugins(use)
   -- Solarized colour theme
   use({ "altercation/vim-colors-solarized" })
 
+  -- Nord colour theme
+  use({ "arcticicestudio/nord-vim" })
+
   -- Change colour theme based on iTerm colour-scheme change
   use({
     "will/bgwinch.nvim",
@@ -249,6 +252,6 @@ local packer = require("packer")
 packer.init(conf)
 packer.startup(plugins)
 
-require("config.solarized")
+require("config.nord")
 require("config.general")
 require("config.filetypes")

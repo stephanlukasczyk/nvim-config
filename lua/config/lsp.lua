@@ -64,6 +64,7 @@ function M.setup()
   M.setup_lsp("pyright", lspconfig, capabilities, on_attach, handlers)
   M.setup_lsp("pylsp", lspconfig, capabilities, on_attach, handlers)
   M.setup_texlab(lspconfig, capabilities, on_attach, handlers)
+  -- M.setup_digestif(lspconfig, capabilities, on_attach, handlers)
   M.setup_lua(lspconfig, capabilities, on_attach, handlers)
   M.setup_null_ls(on_attach)
 
@@ -105,6 +106,20 @@ function M.setup_lsp(name, lspconfig, capabilities, on_attach, handlers)
   })
 end
 
+function M.setup_digestif(lspconfig, capabilities, on_attach, handlers)
+  lspconfig["digestif"].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers = handlers,
+    settings = {
+      digestif = {
+        command = "digestif",
+        filetypes = {"tex", "plaintex", "context"},
+      },
+    },
+  })
+end
+
 function M.setup_texlab(lspconfig, capabilities, on_attach, handlers)
   local executable = "/Applications/Skim.app/Contents/SharedSupport/displayline"
   local args = { "%l", "%p", "%f" }
@@ -139,7 +154,7 @@ function M.setup_lua(lspconfig, capabilities, on_attach, handlers)
     },
   })
 
-  lspconfig["sumneko_lua"].setup({
+  lspconfig["lua_ls"].setup({
     on_attach = on_attach,
     capabilities = capabilities,
     handlers = handlers,

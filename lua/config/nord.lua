@@ -1,7 +1,6 @@
 vim.cmd([[
-  colorscheme solarized
+  colorscheme nord
 ]])
-vim.o.background = "light"
 
 vim.cmd([[
   hi! link SignColumn LineNr
